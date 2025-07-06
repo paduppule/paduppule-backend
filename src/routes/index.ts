@@ -12,6 +12,7 @@ import lessonRoutes from "./lesson.routes";
 import completionRoutes from "./completion.routes";
 import certificateRoutes from "./certificate.routes";
 import instructorRoutes from "./instructor.routes";
+import adminRoutes from "./admin.routes";
 const router = Router();
 
 router.use("/auth", authRoutes); // Mount under /api/auth
@@ -27,5 +28,6 @@ router.use("/lessons", lessonRoutes); // Mount under /api/lessons
 router.use("/completions", completionRoutes); // Mount under /api/completions
 router.use("/certificates", certificateRoutes); // Mount under /api/certificates
 router.use("/instructor", instructorRoutes); // Mount under /api/instructor
+router.use("/admin", adminRoutes); // Mount under /api/admin
 
 export default router;

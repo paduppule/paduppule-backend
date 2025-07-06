@@ -21,6 +21,11 @@
       "type": "string"
     },
     {
+      "key": "api_key",
+      "value": "",
+      "type": "string"
+    },
+    {
       "key": "course_id",
       "value": "",
       "type": "string"
@@ -489,6 +494,432 @@
               "raw": "{{base_url}}/leaderboards",
               "host": ["{{base_url}}"],
               "path": ["leaderboards"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Sections",
+      "item": [
+        {
+          "name": "Get Course Sections",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{trainee_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/sections/course/{{course_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["sections", "course", "{{course_id}}"]
+            }
+          }
+        },
+        {
+          "name": "Create Section",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{trainer_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Introduction to Menstrual Health\",\n  \"description\": \"Basic concepts and terminology\",\n  \"courseId\": \"{{course_id}}\",\n  \"order\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/sections",
+              "host": ["{{base_url}}"],
+              "path": ["sections"]
+            }
+          }
+        },
+        {
+          "name": "Update Section",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{trainer_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Updated Section Title\",\n  \"description\": \"Updated description\",\n  \"order\": 2\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/sections/section_id_here",
+              "host": ["{{base_url}}"],
+              "path": ["sections", "section_id_here"]
+            }
+          }
+        },
+        {
+          "name": "Delete Section",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{trainer_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/sections/section_id_here",
+              "host": ["{{base_url}}"],
+              "path": ["sections", "section_id_here"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Lessons",
+      "item": [
+        {
+          "name": "Get Section Lessons",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{trainee_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/lessons/section/section_id_here",
+              "host": ["{{base_url}}"],
+              "path": ["lessons", "section", "section_id_here"]
+            }
+          }
+        },
+        {
+          "name": "Create Lesson",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{trainer_token}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "Understanding Menstrual Cycle",
+                  "type": "text"
+                },
+                {
+                  "key": "content",
+                  "value": "The menstrual cycle is a natural process...",
+                  "type": "text"
+                },
+                {
+                  "key": "sectionId",
+                  "value": "section_id_here",
+                  "type": "text"
+                },
+                {
+                  "key": "order",
+                  "value": "1",
+                  "type": "text"
+                },
+                {
+                  "key": "attachments",
+                  "type": "file",
+                  "src": []
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/lessons",
+              "host": ["{{base_url}}"],
+              "path": ["lessons"]
+            }
+          }
+        },
+        {
+          "name": "Update Lesson",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{trainer_token}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "title",
+                  "value": "Updated Lesson Title",
+                  "type": "text"
+                },
+                {
+                  "key": "content",
+                  "value": "Updated lesson content...",
+                  "type": "text"
+                },
+                {
+                  "key": "order",
+                  "value": "2",
+                  "type": "text"
+                },
+                {
+                  "key": "attachments",
+                  "type": "file",
+                  "src": []
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/lessons/lesson_id_here",
+              "host": ["{{base_url}}"],
+              "path": ["lessons", "lesson_id_here"]
+            }
+          }
+        },
+        {
+          "name": "Delete Lesson",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{trainer_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/lessons/lesson_id_here",
+              "host": ["{{base_url}}"],
+              "path": ["lessons", "lesson_id_here"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Completions",
+      "item": [
+        {
+          "name": "Mark Lesson Complete",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{trainee_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lessonId\": \"lesson_id_here\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/completions",
+              "host": ["{{base_url}}"],
+              "path": ["completions"]
+            }
+          }
+        },
+        {
+          "name": "Get User Completions",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{trainee_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/completions/user",
+              "host": ["{{base_url}}"],
+              "path": ["completions", "user"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Certificates",
+      "item": [
+        {
+          "name": "Generate Certificate",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{trainee_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"courseId\": \"{{course_id}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/certificates/generate",
+              "host": ["{{base_url}}"],
+              "path": ["certificates", "generate"]
+            }
+          }
+        },
+        {
+          "name": "Get User Certificates",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{trainee_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/certificates/user",
+              "host": ["{{base_url}}"],
+              "path": ["certificates", "user"]
+            }
+          }
+        },
+        {
+          "name": "Verify Certificate",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/certificates/verify/CERT-2024-001",
+              "host": ["{{base_url}}"],
+              "path": ["certificates", "verify", "CERT-2024-001"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Instructor Dashboard",
+      "item": [
+        {
+          "name": "Get Dashboard Overview",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{trainer_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/instructor/dashboard",
+              "host": ["{{base_url}}"],
+              "path": ["instructor", "dashboard"]
+            }
+          }
+        },
+        {
+          "name": "Get Course Analytics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{trainer_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/instructor/courses/{{course_id}}/analytics",
+              "host": ["{{base_url}}"],
+              "path": ["instructor", "courses", "{{course_id}}", "analytics"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin & API Key Management",
+      "item": [
+        {
+          "name": "Generate API Key",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "{{api_key}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"prefix\": \"padup\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/admin/generate-api-key",
+              "host": ["{{base_url}}"],
+              "path": ["admin", "generate-api-key"]
+            }
+          }
+        },
+        {
+          "name": "Get System Info",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "{{api_key}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/admin/system-info",
+              "host": ["{{base_url}}"],
+              "path": ["admin", "system-info"]
+            }
+          }
+        },
+        {
+          "name": "Get All Courses (with API Key)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "{{api_key}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/courses",
+              "host": ["{{base_url}}"],
+              "path": ["courses"]
             }
           }
         }
