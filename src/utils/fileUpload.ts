@@ -8,12 +8,12 @@ const storage = multer.diskStorage({
   }
 });
 
-export const upload = multer({
+export const fileUpload = multer({
   storage,
   fileFilter: (_, file, cb) => {
     const ext = path.extname(file.originalname);
-    if (![".png", ".jpg", ".jpeg"].includes(ext)) {
-      return cb(new Error("Only images are allowed"));
+    if (![".pdf", ".docx", ".zip", ".pptx"].includes(ext)) {
+      return cb(new Error("Unsupported file type"));
     }
     cb(null, true);
   }

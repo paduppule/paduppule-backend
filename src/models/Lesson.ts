@@ -5,6 +5,7 @@ export interface ILesson extends Document {
   title: string;
   content: string;
   videoUrl?: string;
+  attachments?: string[];
 }
 
 const lessonSchema = new Schema<ILesson>(
@@ -12,7 +13,8 @@ const lessonSchema = new Schema<ILesson>(
     section: { type: Schema.Types.ObjectId, ref: "Section", required: true },
     title: { type: String, required: true },
     content: String,
-    videoUrl: String
+    videoUrl: String,
+    attachments: [String]
   },
   { timestamps: true }
 );
