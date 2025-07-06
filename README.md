@@ -1,35 +1,35 @@
 # PadupPulse Backend API
 
-A comprehensive learning management system backend built with Node.js, Express, TypeScript, and MongoDB. This API provides course management, user authentication, payment processing, and quiz functionality.
+A comprehensive menstrual hygiene and wellness education platform built with Node.js, Express, TypeScript, and MongoDB. This API provides menstrual health education, cycle tracking, user authentication, payment processing, and interactive learning features.
 
 ## 🚀 Features
 
 - **User Authentication & Authorization**
   - JWT-based authentication
-  - Role-based access control (Trainer, Trainee, Admin)
+  - Role-based access control (Health Educator, Wellness Seeker, Admin)
   - Secure password hashing with bcrypt
 
-- **Course Management**
-  - Create, read, update courses
-  - Course enrollment system
-  - Free and paid course support
-  - Course categorization
+- **Menstrual Health Education**
+  - Create, read, update menstrual hygiene courses
+  - Course enrollment system for wellness programs
+  - Free and paid menstrual health content support
+  - Health topic categorization
 
 - **Payment Integration**
   - Paystack payment gateway integration
-  - Payment verification
+  - Payment verification for premium menstrual health content
   - Automatic enrollment after successful payment
 
-- **Quiz System**
-  - Dynamic quiz generation
-  - Quiz submission and scoring
-  - Progress tracking
-  - Leaderboard functionality
+- **Interactive Learning System**
+  - Dynamic menstrual health assessment quizzes
+  - Wellness knowledge testing and scoring
+  - Progress tracking for menstrual health goals
+  - Wellness leaderboard functionality
 
-- **Progress Tracking**
-  - User learning progress
-  - Course completion tracking
-  - Performance analytics
+- **Wellness Progress Tracking**
+  - User menstrual health journey progress
+  - Wellness course completion tracking
+  - Health performance analytics
 
 ## 🛠️ Tech Stack
 
@@ -95,7 +95,7 @@ Content-Type: application/json
   "name": "John Doe",
   "email": "john@example.com",
   "password": "password123",
-  "role": "trainee"
+  "role": "wellness_seeker"
 }
 ```
 
@@ -110,29 +110,29 @@ Content-Type: application/json
 }
 ```
 
-### Course Endpoints
+### Menstrual Health Course Endpoints
 
-#### Get All Courses
+#### Get All Menstrual Health Courses
 ```http
 GET /courses
 ```
 
-#### Create Course (Trainer Only)
+#### Create Menstrual Health Course (Health Educator Only)
 ```http
 POST /courses
 Authorization: Bearer <token>
 Content-Type: multipart/form-data
 
 {
-  "title": "Course Title",
-  "description": "Course Description",
-  "price": 100,
+  "title": "Menstrual Hygiene Basics",
+  "description": "Essential guide to menstrual hygiene and wellness",
+  "price": 5000,
   "isFree": false,
   "image": [file]
 }
 ```
 
-#### Enroll in Course
+#### Enroll in Menstrual Health Course
 ```http
 POST /courses/enroll
 Authorization: Bearer <token>
@@ -167,15 +167,15 @@ Content-Type: application/json
 }
 ```
 
-### Quiz Endpoints
+### Menstrual Health Assessment Endpoints
 
-#### Generate Quiz
+#### Generate Menstrual Health Assessment
 ```http
 GET /quiz/generate
 Authorization: Bearer <token>
 ```
 
-#### Submit Quiz
+#### Submit Menstrual Health Assessment
 ```http
 POST /quiz/submit
 Authorization: Bearer <token>
@@ -202,23 +202,23 @@ Content-Type: application/json
 ### Testing Flow
 
 1. **Authentication**
-   - Register a trainer and trainee
+   - Register a health educator and wellness seeker
    - Login to get JWT tokens
 
-2. **Course Management**
-   - Create courses (trainer)
-   - List all courses
-   - Enroll in courses (trainee)
+2. **Menstrual Health Course Management**
+   - Create menstrual hygiene courses (health educator)
+   - List all menstrual health courses
+   - Enroll in wellness courses (wellness seeker)
 
 3. **Payment Testing**
-   - Initialize payment for paid courses
+   - Initialize payment for premium menstrual health content
    - Use Paystack test cards
    - Verify payment completion
 
-4. **Quiz System**
-   - Generate quizzes
-   - Submit answers
-   - Check results
+4. **Menstrual Health Assessment System**
+   - Generate menstrual health assessments
+   - Submit wellness knowledge answers
+   - Check menstrual health journey progress
 
 ### Paystack Test Cards
 
@@ -351,5 +351,7 @@ If you encounter any issues or have questions:
 - [Paystack Documentation](https://paystack.com/docs)
 
 ---
+
+**Empowering young people to confidently navigate their menstrual health journey and unlock the keys to wellness.**
 
 **Made with ❤️ by the PadupPulse Team**
